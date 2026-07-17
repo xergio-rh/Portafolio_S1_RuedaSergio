@@ -1,18 +1,16 @@
-
 :root {
-    --bg-primary: #0F172A;       
-    --bg-secondary: #1E293B;     
-    --bg-card: #1E293B;          
-    --text-main: #F8FAFC;        
-    --text-muted: #94A3B8;       
-    --accent-blue: #3B82F6;      
-    --accent-blue-glow: rgba(59, 130, 246, 0.15);
-    --accent-gold: #E2E8F0;      
-    --accent-active: #60A5FA;    
-    --border-color: rgba(148, 163, 184, 0.12);
-    --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --bg-primary: #080808;       
+    --bg-secondary: #0f0f11;     
+    --bg-card: #121214;          
+    --border-color: #1a1a1e;     
+    --accent-blue: #00ff9d;      
+    --accent-blue-glow: rgba(0, 255, 157, 0.15); 
+    --text-main: #f3f4f6;        
+    --text-muted: #94a3b8;       
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 
 *, *::before, *::after {
@@ -95,7 +93,7 @@ section {
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--accent-blue);
+    color: var(--accent-blue) !important;
 }
 
 
@@ -219,36 +217,29 @@ section {
 }
 
 .btn-primary {
-    display: inline-block;
-    padding: 14px 28px;
-    background-color: var(--accent-blue);
-    color: #FFF;
-    font-weight: 600;
-    border-radius: 6px;
-    border: 1px solid var(--accent-blue);
-    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+    background-color: var(--accent-blue) !important;
+    color: #080808 !important; 
+    font-weight: 600 !important;
+    border: none !important;
+    box-shadow: 0 4px 20px rgba(0, 255, 157, 0.2);
+    transition: var(--transition-smooth);
 }
 
 .btn-primary:hover {
-    background-color: var(--accent-active);
-    border-color: var(--accent-active);
+    background-color: #00e088 !important; 
+    box-shadow: 0 4px 25px rgba(0, 255, 157, 0.4);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .btn-secondary {
-    display: inline-block;
-    padding: 14px 28px;
-    background-color: transparent;
-    color: var(--text-main);
-    font-weight: 600;
-    border-radius: 6px;
-    border: 1px solid var(--text-muted);
+    background-color: transparent !important;
+    color: var(--accent-blue) !important;
+    border: 1px solid var(--accent-blue) !important;
+    transition: var(--transition-smooth);
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: var(--text-main);
+    background-color: rgba(0, 255, 157, 0.05) !important;
     transform: translateY(-2px);
 }
 
@@ -568,6 +559,11 @@ section {
 #contact-form textarea {
     min-height: 120px;
     resize: vertical;
+}
+
+#btn-submit.success {
+    background-color: #00ff9d !important;
+    color: #080808 !important;
 }
 
 
