@@ -80,7 +80,8 @@ document.addEventListener('DOMContentLoaded', () => {
             form_sending: "Enviando...",
             form_success: "¡Mensaje Enviado!",
             form_error: "Error al enviar",
-            form_conn_error: "Error de conexión"
+            form_conn_error: "Error de conexión",
+            about_video_url: "https://www.youtube.com/embed/FDe1DPdnQBo"
         },
         en: {
             nav_home: "Home",
@@ -120,7 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
             form_sending: "Sending...",
             form_success: "Message Sent!",
             form_error: "Error sending",
-            form_conn_error: "Connection error"
+            form_conn_error: "Connection error",
+            about_video_url: "https://www.youtube.com/embed/JilkWYnRMqU"
         }
     };
 
@@ -186,6 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 input.setAttribute('placeholder', translations[lang][key]);
             }
         });
+
+        
+        const aboutVideo = document.getElementById('about-video');
+        if (aboutVideo && translations[lang]['about_video_url']) {
+            if (aboutVideo.getAttribute('src') !== translations[lang]['about_video_url']) {
+                aboutVideo.setAttribute('src', translations[lang]['about_video_url']);
+            }
+        }
     }
 
     dropdownItems.forEach(item => {
