@@ -1,37 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SARH</title>
-    <link rel="stylesheet" href="./styles/styles.css">
-
-
+    <title>Sergio Rueda</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
 </head>
+
 <body>
-    <header>
-        <div class="objetivos">Obejtivos</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <!-- nav bar -->
+    <header class="navbar">
+        <div class="logo">
+            <span>&lt;SR /&gt;</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mi</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto" class="btn-primary">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
-    <div class="titulo">Sergio Rueda</div>
 
+    <!-- descri -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <span class="sub-title">Hola, mi nombre es</span>
+            <h1>Sergio Andrés Rueda</h1>
+            <h2>Creo software eficiente, lógico y con impacto visual.</h2>
+            <p>Desarrollador de software enfocado en construir aplicaciones web robustas, automatizaciones eficientes y soluciones backend de alto rendimiento.</p>
+            <div class="hero-buttons">
+                <a href="#proyectos" class="btn-primary">Ver Proyectos</a>
+                <a href="#contacto" class="btn-secondary">Hablemos</a>
+            </div>
+        </div>
+    </section>
 
+    <!-- me -->
+    <section id="sobre-mi" class="about">
+        <div class="section-title">
+            <h2>¿Quién es Sergio?</h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Soy un desarrollador de software con mentalidad analítica y un fuerte enfoque en resolver problemas complejos mediante código limpio. Formado con el rigor técnico de <strong>CampusLands</strong> y las <strong>Unidades Tecnológicas de Santander</strong>, combino mi pasión por la tecnología con habilidades blandas clave como la comunicación asertiva, el liderazgo y la resiliencia.</p>
+                <p>Mi background técnico me permite adaptarme rápidamente a diferentes entornos, trabajando de manera eficiente tanto en el diseño de interfaces de usuario como en la arquitectura de bases de datos y desarrollo backend.</p>
+            </div>
+        </div>
+    </section>
 
-    
+    <!-- Skills -->
+    <section id="habilidades" class="skills">
+        <div class="section-title">
+            <h2>Habilidades Técnicas</h2>
+            <div class="line"></div>
+        </div>
+        <div class="skills-grid">
+            <!-- Backend -->
+            <div class="skill-card">
+                <i class='bx bxl-nodejs' style="color: #68a063;"></i>
+                <h3>Backend</h3>
+                <p>Node.js, Fastify, Python</p>
+            </div>
+            <!-- Frontend -->
+            <div class="skill-card">
+                <i class='bx bxl-javascript' style="color: #f0db4f;"></i>
+                <h3>Frontend</h3>
+                <p>JavaScript (ES6+), HTML5, CSS3</p>
+            </div>
+            <!-- Databases -->
+            <div class="skill-card">
+                <i class='bx bxl-mongodb' style="color: #4db33d;"></i>
+                <h3>Bases de Datos</h3>
+                <p>MongoDB, SQL</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- proyects -->
+    <section id="proyectos" class="projects">
+        <div class="section-title">
+            <h2>Mis Proyectos</h2>
+            <div class="line"></div>
+        </div>
+        <div class="projects-grid">
+            <!-- Proyecto 1: F1 Simulator -->
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="placeholder-img">F1 Simulator</div>
+                </div>
+                <div class="project-info">
+                    <h3>F1 Interactive Simulator</h3>
+                    <p class="tech-stack">JavaScript • HTML5 • CSS3 • API Custom</p>
+                    <p>Aplicación web interactiva que simula estadísticas y carreras de la Fórmula 1 consumiendo datos en tiempo real mediante una API estructurada.</p>
+                </div>
+            </div>
+
+            <!-- Proyecto 2: Math Matrix Tool -->
+            <div class="project-card">
+                <div class="project-img">
+                    <div class="placeholder-img">Matrix Algebra Suite</div>
+                </div>
+                <div class="project-info">
+                    <h3>Matrix & System Solver</h3>
+                    <p class="tech-stack">JavaScript • HTML5 • CSS3</p>
+                    <p>Calculadora y resolvedor dinámico para álgebra matricial, sistemas de ecuaciones y mapeo de números complejos con renderizado matemático en pantalla.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact">
+        <div class="section-title">
+            <h2>¿Trabajamos Juntos?</h2>
+            <div class="line"></div>
+        </div>
+        <div class="contact-container">
+            <form id="contact-form" class="contact-form">
+                <input type="text" placeholder="Tu Nombre" required>
+                <input type="email" placeholder="Tu Correo" required>
+                <textarea placeholder="Cuéntame sobre tu proyecto..." rows="5" required></textarea>
+                <button type="submit" class="btn-primary">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- foot -->
+    <footer>
+        <p>&copy; 2026 Sergio Andrés Rueda. Hecho con código puro.</p>
+        <div class="social-icons">
+            <a href="#"><i class='bx bxl-github'></i></a>
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+        </div>
+    </footer>
+
+    <!-- ¡Ruta corregida hacia tu carpeta de scripts! -->
+    <script src="scripts/main.js"></script>
 </body>
 </html>
