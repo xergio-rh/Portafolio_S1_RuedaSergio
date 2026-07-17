@@ -1,63 +1,88 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // animacion al scrolear
     const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scroll-active');
-        } else {
-            navbar.classList.remove('scroll-active');
-        }
-    });
+    if (navbar) { 
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scroll-active');
+            } else {
+                navbar.classList.remove('scroll-active');
+            }
+        });
+    }
 
-    
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= (sectionTop - 150)) {
-                current = section.getAttribute('id');
-            }
-        });
+    if (sections.length > 0 && navLinks.length > 0) {
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id') || '';
+                }
+            });
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                
+                if (href && current && href.includes(current)) {
+                    link.classList.add('active');
+                }
+            });
         });
-    });
+    }
 
-    // form
     const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Enviando...';
-            submitBtn.disabled = true;
+    const btnSubmit = document.getElementById('btn-submit');
 
-            
-            setTimeout(() => {
-                submitBtn.textContent = 'Mensaje Enviado';
-                submitBtn.style.backgroundColor = '#10B981'; 
-                submitBtn.style.borderColor = '#10B981';
-                contactForm.reset();
+    if (contactForm && btnSubmit) { // 
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
 
+            const originalText = btnSubmit.innerHTML;
+            btnSubmit.innerHTML = "<i class='bx bx-loader-alt bx-spin'></i> Enviando...";
+            btnSubmit.disabled = true;
+
+            const formData = new FormData(contactForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let res = await response.json();
+                if (response.status === 200) {
+                    btnSubmit.innerHTML = "<i class='bx bx-check-circle'></i> ¡Mensaje Enviado!";
+                    btnSubmit.style.backgroundColor = "#10b981"; 
+                    contactForm.reset(); // Limpiamos los campos
+                } else {
+                    console.log("Error de Web3Forms:", res);
+                    btnSubmit.innerHTML = "Error al enviar";
+                    btnSubmit.style.backgroundColor = "#ef4444"; 
+                }
+            })
+            .catch(error => {
+                console.error("Error de conexión:", error);
+                btnSubmit.innerHTML = "Error de conexión";
+                btnSubmit.style.backgroundColor = "#ef4444";
+            })
+            .then(() => {
                 setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.style.backgroundColor = ''; 
-                    submitBtn.style.borderColor = '';
-                    submitBtn.disabled = false;
-                }, 3000);
-            }, 1500);
+                    btnSubmit.innerHTML = originalText;
+                    btnSubmit.style.backgroundColor = ""; 
+                    btnSubmit.disabled = false;
+                }, 4000);
+            });
         });
     }
 });
